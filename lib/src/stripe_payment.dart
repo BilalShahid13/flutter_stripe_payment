@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart';
 
@@ -147,14 +146,12 @@ class StripePayment {
 
   /// https://tipsi.github.io/tipsi-stripe/docs/authenticatePaymentIntent.html
   static Future<PaymentIntentResult> authenticatePaymentIntent({required String clientSecret}) async {
-    assert(clientSecret != null);
     final result = await _channel.invokeMethod('authenticatePaymentIntent', {"clientSecret": clientSecret});
     return PaymentIntentResult.fromJson(result);
   }
 
   /// https://tipsi.github.io/tipsi-stripe/docs/confirmPaymentIntent.html
   static Future<PaymentIntentResult> confirmPaymentIntent(PaymentIntent intent) async {
-    assert(intent.clientSecret != null);
     assert(intent.paymentMethodId != null);
     final result = await _channel.invokeMethod('confirmPaymentIntent', intent.toJson());
     return PaymentIntentResult.fromJson(result);
@@ -162,14 +159,12 @@ class StripePayment {
 
   /// https://tipsi.github.io/tipsi-stripe/docs/authenticateSetupIntent.html
   static Future<SetupIntentResult> authenticateSetupIntent({required String clientSecret}) async {
-    assert(clientSecret != null);
     final result = await _channel.invokeMethod('authenticateSetupIntent', {"clientSecret": clientSecret});
     return SetupIntentResult.fromJson(result);
   }
 
   /// https://tipsi.github.io/tipsi-stripe/docs/confirmSetupIntent.html
   static Future<SetupIntentResult> confirmSetupIntent(PaymentIntent intent) async {
-    assert(intent.clientSecret != null);
     assert(intent.paymentMethodId != null);
     final result = await _channel.invokeMethod('confirmSetupIntent', intent.toJson());
     return SetupIntentResult.fromJson(result);

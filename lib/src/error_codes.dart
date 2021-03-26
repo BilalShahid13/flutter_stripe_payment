@@ -1,8 +1,6 @@
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 
-import 'package:flutter/material.dart';
-
 class Errors {
   static Map<String, Map<String, String?>> mapping = {
     "busy": ErrorCode(
